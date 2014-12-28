@@ -14,7 +14,7 @@ module SessionsHelper
   end
 
 
-  # Returns the user corresponding to the remember token cookie (if any).
+  # Returns the user corresponding to the remember token cookie.
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
