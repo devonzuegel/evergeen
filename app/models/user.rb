@@ -22,7 +22,10 @@ class User < ActiveRecord::Base
 
   # Password validations
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true
+      # Note that has_secure_password enforces presence validations upon object
+      # creation, so allow_blank only applies on settings update, to account for the
+      # case where user only wishes to update their email, not their password
 
 
   # Returns the hash digest of the given string.
