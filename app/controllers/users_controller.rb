@@ -1,16 +1,23 @@
 class UsersController < ApplicationController
 
-  # Only authorized users may access \edit and \update
-  before_action :logged_in_user, only: [:edit, :update]
+  # Only authorized users may access \index, \edit, and \update
+  before_action :logged_in_user, only: [:index, :edit, :update]
 
   # Redirects users trying to edit another user’s profile
   before_action :correct_user,   only: [:edit, :update]
 
 
+  def index
+    ##
+    # User.paginate pulls the users out of the database one chunk at a
+    # time (30 by default), based on the :page parameter.
+    @users = User.paginate(page: params[:page])
+  end
+
+
   def show
     @user = User.find(params[:id])
   end
-
 
 
   def new
