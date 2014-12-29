@@ -8,6 +8,9 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
 
   test "unsuccessful edit" do
+  	# edit and update actions now require a logged-in user
+    log_in_as(@user)
+
     get(edit_user_path(@user))
     assert_template('users/edit')
 
@@ -22,9 +25,12 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "successful edit" do
-    get edit_user_path(@user)
-    assert_template 'users/edit'
+  test "successful edit with friendly forwarding" do
+    get(edit_user_path(@user))
+    log_in_as(@user)
+
+    assert_redirected_to(edit_user_path(@user))
+
     name  = "Foo Bar"
     email = "foo@bar.com"
     patch user_path(@user), user: { name:  name,

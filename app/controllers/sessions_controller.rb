@@ -11,8 +11,9 @@ class SessionsController < ApplicationController
 
     	# Handling the submission of the “remember me” checkbox.
       (params[:session][:remember_me] == '1') ? remember(user) : forget(user)
-      
-    	redirect_to(user_url(user))
+
+      # Redirects to stored location (or to the user's page)
+      redirect_back_or(user)
     else
       flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
       render('new')
