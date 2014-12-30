@@ -13,7 +13,18 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   resources :users
+
+  ##
+  # Model account activations as a resource even though they won’t be 
+  # associated with an Active Record model. Instead, we’ll include the
+  # relevant data (including the activation token and activation status)
+  # in the User model. Nevertheless, we’ll interact with account 
+  # activations via a standard REST URL.
+  resources :account_activations, only: [:edit]
   
+
+  # --------------------------------------------------------------------
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

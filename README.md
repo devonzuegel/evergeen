@@ -1,4 +1,7 @@
-== README
+## Previewing mailers
+Visit `http://localhost:3000/rails/mailers/user_mailer/account_activation` to view a preview of the account activation mailer. Substitute in the name of the mailer you wish to see for `account_activation` at the end of the link.
+
+## Misc
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
