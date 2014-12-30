@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       if user.activated?
+        # Logs user in
         log_in(user)
-        # Handling the submission of the “remember me” checkbox.
+        # Handles the submission of the “remember me” checkbox.
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         # Redirects to stored location (or to the user's page)
         redirect_back_or(user)
