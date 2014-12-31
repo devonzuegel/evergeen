@@ -7,9 +7,8 @@ class AccountActivationsController < ApplicationController
 		# '!user.activated?' disallows activating already-activated users.
 		# The user's activation token must be valid
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
-      user.update_attribute(:activated,    true)
-      user.update_attribute(:activated_at, Time.zone.now)
-      log_in user
+      user.activate
+      log_in(user)
       flash[:success] = "Account activated!"
       redirect_to user
     else

@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # Deliver account activation email
-      UserMailer.account_activation(@user).deliver_now
+      @user.send_activation_email
 
       # Indicate to user that they must activate their account through their
       # email before they may proceed.
