@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get 'sessions/new'
 
   get 'users/new'
@@ -21,6 +25,11 @@ Rails.application.routes.draw do
   # in the User model. Nevertheless, we’ll interact with account 
   # activations via a standard REST URL.
   resources :account_activations, only: [:edit]
+
+  ##
+  # We need forms both for creating new password resets and for updating
+  # them by changing the password in the User model.
+  resources :password_resets, only: [:new, :create, :edit, :update]
   
 
   # --------------------------------------------------------------------
