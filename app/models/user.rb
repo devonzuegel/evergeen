@@ -111,7 +111,16 @@ class User < ActiveRecord::Base
   end
 
 
- 
+  # Defines a proto-feed.
+  # See "Following users" for the full implementation.
+  def feed
+    ##
+    # The '?' ensures that id is properly escaped before being included
+    # in the underlying SQL query, thereby avoiding SQL injection.
+    Micropost.where("user_id = ?", id)
+  end
+
+
   private # ----------------------------------------------
 
     # Converts email to all lower-case.
