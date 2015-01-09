@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :microposts
+
   # Create a getter & a setter for remember_token, activation_token, & reset_token.
   attr_accessor :remember_token, :activation_token, :reset_token
 

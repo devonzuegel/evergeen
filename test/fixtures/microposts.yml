@@ -1,9 +1,20 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+##
+# The 'created_at' column is normally a “magic” column automatically
+# updated by Rails, setting it by hand isn’t ordinarily possible, but
+# it is possible in fixtures.
 
-one:
-  content: MyText
-  user_id: 
+orange:
+  content: "I just ate an orange!"
+  created_at: <%= 10.minutes.ago %>
 
-two:
-  content: MyText
-  user_id: 
+tau_manifesto:
+  content: "Check out the @tauday site by @mhartl: http://tauday.com"
+  created_at: <%= 3.years.ago %>
+
+cat_video:
+  content: "Sad cats are sad: http://youtu.be/PKffm2uI4dk"
+  created_at: <%= 2.hours.ago %>
+
+most_recent:
+  content: "Writing a short test"
+  created_at: <%= Time.zone.now %>
