@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
 
-  has_many :microposts
+  ##
+  # If a user is destroyed, the user’s microposts should be
+  # destroyed as well. This prevents userless microposts from 
+  # being stranded in the database when admins choose to remove
+  # users from the system.
+  has_many :microposts, dependent: :destroy
 
   # Create a getter & a setter for remember_token, activation_token, & reset_token.
   attr_accessor :remember_token, :activation_token, :reset_token
