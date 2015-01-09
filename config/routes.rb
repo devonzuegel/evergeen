@@ -30,7 +30,12 @@ Rails.application.routes.draw do
   # We need forms both for creating new password resets and for updating
   # them by changing the password in the User model.
   resources :password_resets, only: [:new, :create, :edit, :update]
-  
+
+  ##
+  # The interface to the Microposts resource runs principally through
+  # the Profile and Home pages, so we won’t need actions like new or edit
+  # in the Microposts controller; we’ll need only create and destroy.   
+  resources :microposts, only: [:create, :destroy]
 
   # --------------------------------------------------------------------
 
