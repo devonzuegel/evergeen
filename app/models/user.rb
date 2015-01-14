@@ -21,6 +21,22 @@ class User < ActiveRecord::Base
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
+  has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy
+
+  ##
+  # Rails would see “followeds” and use the singular “followed”,
+  # assembling a collection using the followed_id in the relationships
+  # table. But user.followeds is rather awkward, so we’ll write
+  # user.following instead by using the source parameter, which explicitly
+  # tells Rails that the source of the following array is the set of
+  # followed ids.
+  has_many :following, through: :active_relationships, source: :followed
+  ##
+  # We could omit the :source key, but keeping the :source key emphasizes
+  # the parallel structure with the has_many :following association.
+  has_many :followers, through: :passive_relationships, source: :follower
 
   # Create a getter & a setter for remember_token, activation_token, & reset_token.
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -134,6 +150,25 @@ class User < ActiveRecord::Base
     # in the underlying SQL query, thereby avoiding SQL injection.
     Micropost.where("user_id = ?", id)
   end
+
+
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+
+  # Unfollows a user.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
 
 
   private # ----------------------------------------------
