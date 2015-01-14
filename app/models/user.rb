@@ -7,6 +7,21 @@ class User < ActiveRecord::Base
   # users from the system.
   has_many :microposts, dependent: :destroy
 
+  ##
+  # We have to tell Rails the model class name to look for, because the
+  # :active_relationships symbol does not directly map to the Relationship
+  # model's name.
+  ##
+  # By default, Rails expects a foreign key of the form <class>_id. In
+  # this present case, although we are still dealing with users, the
+  # user following another user is now identified with the foreign key
+  # follower_id, so we have to tell that to Rails.
+  ##
+  # Destroying a user should also destroy that user’s relationships
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
+
   # Create a getter & a setter for remember_token, activation_token, & reset_token.
   attr_accessor :remember_token, :activation_token, :reset_token
 
