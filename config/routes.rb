@@ -16,7 +16,19 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  resources :users
+  ##
+  # Arranges for the URLs for following and followers to look like
+  # '/users/1/following' and '/users/1/followers' respectively. Both
+  # pages will be showing data, so the proper HTTP verb is a GET request.
+  ##
+  # The 'member' method arranges for the routes to respond to URLs
+  # containing the user id. The other possibility, collection, works
+  # without the id (ex: '/users/tigers' displays all tigers in our app).
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   ##
   # Model account activations as a resource even though they won’t be 
