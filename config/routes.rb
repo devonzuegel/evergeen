@@ -44,10 +44,11 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   ##
-  # The interface to the Microposts resource runs principally through
+  # The interface to Micropost & Relationship resources runs through
   # the Profile and Home pages, so we won’t need actions like new or edit
   # in the Microposts controller; we’ll need only create and destroy.   
-  resources :microposts, only: [:create, :destroy]
+  resources :microposts,    only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   # --------------------------------------------------------------------
 
