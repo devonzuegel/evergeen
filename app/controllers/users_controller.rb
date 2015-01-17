@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
-  # Only authorized users may access \index, \edit, \update, & \destroy.
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  ##
+  # Only authorized users may access \index, \edit, \update, \destroy,
+  # \:id\following, & \:id\followers.
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                        :following, :followers]
 
   # Restricts access to the 'destroy' action to admins.
   before_action :admin_user,     only: :destroy
@@ -64,6 +67,32 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_url
+  end
+
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    ##
+    # The usual Rails convention is to implicitly render the template
+    # corresponding to an action, but for followers & following the
+    # view we want is nearly identical, so we can just explicitly call
+    # a shared view called 'show_follow'.
+    render('show_follow')
+  end
+
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    ##
+    # The usual Rails convention is to implicitly render the template
+    # corresponding to an action, but for followers & following the
+    # view we want is nearly identical, so we can just explicitly call
+    # a shared view called 'show_follow'.
+    render('show_follow')
   end
 
 
