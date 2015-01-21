@@ -1,8 +1,3 @@
-<!--
-'remote: true' automatically sets the form to use Ajax
-to asynchronously send requests to the server without
-leaving the page.
--->
 <%= form_for(current_user.active_relationships.
                           build(followed_id: @user.id),
                           remote: true) do |f| %>
