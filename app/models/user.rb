@@ -170,6 +170,30 @@ class User < ActiveRecord::Base
   end
 
 
+  # Returns true if a password reset has expired.
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
+  # Returns a user's status feed.
+  def feed
+    ##
+    # This subselect arranges for all the set logic to be pushed into the
+    # database, which is more efficient than putting all a following_ids
+    # array into memory.
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+  end
+
+
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+
 
   private # ----------------------------------------------
 
