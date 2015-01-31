@@ -1,6 +1,6 @@
 li id="#{micropost.id}" 
-  = link_to gravatar_for(micropost.user), micropost.user
-  span.user= link_to micropost.user.name, micropost.user
+  = link_to(gravatar_for(micropost.user), micropost.user)
+  span.user= link_to(micropost.user.name, micropost.user)
   span.content
     = micropost.content
     /!/!/!

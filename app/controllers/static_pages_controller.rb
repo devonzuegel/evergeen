@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+    puts 'AAA: ' + ENV['TEST']
   end
 
   def contact
