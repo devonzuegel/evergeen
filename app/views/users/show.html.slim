@@ -1,4 +1,5 @@
 - provide(:title, @user.name)
+
 .row
   aside.col-md-4
     section.user_info
@@ -7,11 +8,52 @@
         = @user.name
     section.stats
       = render 'shared/stats'
+    br
+    button.btn.btn-primary(id='connect-humanAPI-btn') Connect your data
   .col-md-8
     = render 'follow_form' if logged_in?
     - if @user.microposts.any?
-      h3
-        | Microposts (#{@user.microposts.count})
+      h3 Microposts (#{@user.microposts.count})
       ol.microposts
         = render @microposts
       = will_paginate @microposts
+
+script(src='https://connect.humanapi.co/connect.js')
+
+javascript:
+  var connect_btn = document.getElementById('connect-humanAPI-btn');
+  connect_btn.addEventListener('click', function(e) {
+    var options = {
+      clientId: '#{ENV["HUMAN_API_CLIENT_ID"]}',
+      clientUserId: '#{@user.email}',  // can be an email or another internal id of the user in your system
+
+      /* Callback 'finish' is called after the user finishes connecting his/her
+       * health Data. You need to post 'sessionTokenObject' to your server,
+       * append 'clientSecret' to it, and send it to our server. */
+      finish: function(err, sessionTokenObject) {
+        alert('finished');
+      },
+
+      /* This optional callback 'close' is called after the user closes the
+       * popup without connecting any data sources. */
+      close: function() {
+        // $.get( '/users/#{@user.id}/edit', function( data ) {
+        //   alert('success ' + data);
+        // });
+        $.post( '/users/#{@user.id}/update', { 
+          sessionToken: sessionTokenObject 
+        }, function( data ) {
+          alert('hi!');
+        }, "json");
+      },
+
+      /* This optional callback that's called if an error occurs while
+       * loading the popup. */
+      error: function(err) {
+        // `err` is an object with the fields: `code`, `message`, `detailedMessage`
+        alert(err);
+      }
+
+    }
+    HumanConnect.open(options);
+  });

@@ -49,6 +49,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    p params
   end
 
 
@@ -60,6 +61,12 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+
+  def connect_humanAPI
+    @user = User.find(params[:id])
+    p params
   end
 
 

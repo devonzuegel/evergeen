@@ -48,7 +48,6 @@ class User < ActiveRecord::Base
   # Assign the token and corresponding digest
   before_create :create_activation_digest
 
-
   before_save { self.email = self.email.downcase }
 
 
