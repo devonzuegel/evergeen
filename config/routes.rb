@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :transactions
+
+  resources :accounts
+
+  mount Payola::Engine => '/payola', as: :payola
   get 'password_resets/new'
   get 'password_resets/edit'
 
@@ -29,6 +34,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :charges
+  
   ##
   # Model account activations as a resource even though they won’t be 
   # associated with an Active Record model. Instead, we’ll include the

@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  ###### RELATIONSHIPS ###################################################
+
   ##
   # If a user is destroyed, the user’s microposts should be
   # destroyed as well. This prevents userless microposts from 
@@ -24,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
+  has_one :account
 
   ##
   # Rails would see “followeds” and use the singular “followed”,
@@ -41,6 +44,10 @@ class User < ActiveRecord::Base
   # Create a getter & a setter for remember_token, activation_token, & reset_token.
   attr_accessor :remember_token, :activation_token, :reset_token
 
+
+
+  ###### FILTERS ########################################################
+
   # Downcase the email attribute before saving the user. Applies on
   # both create & update.
   before_save   :downcase_email
@@ -50,6 +57,9 @@ class User < ActiveRecord::Base
 
   before_save { self.email = self.email.downcase }
 
+
+
+  ###### VALIDATIONS ####################################################
 
 	# Name validations
   validates :name, presence: true
