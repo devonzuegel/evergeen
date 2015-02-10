@@ -1,7 +1,17 @@
+<script>
+function check(elem) {
+  if(!elem.value.match(/^\d?\d\.\d\d$/)) {
+    alert('Error in data – use the format dd.dd (d = digit)');
+  }
+}
+</script>
+
 <%= form_tag charges_path do %>
   <article>
     <label class="amount">
-      <span>Amount: $5.00</span>
+      <span>Amount:
+      	<input pattern="\d?\d\.\d\d" maxlength=5 size=5 onchange="check(this)">
+			</span>
     </label>
   </article>
 
