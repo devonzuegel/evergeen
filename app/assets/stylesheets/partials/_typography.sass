@@ -1,7 +1,36 @@
-@import '_variables'
-@import '_mixins'
+@import "_variables"
+@import "_mixins"
+
+
+@font-face
+  font-family: "Sentinel"
+  src: url("Sentinel-Regular.otf") format("opentype")
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: "Sentinel"
+  src: url("Sentinel-Italic.otf") format("opentype")
+  font-weight: normal
+  font-style: italic
+
+@font-face
+  font-family: "Sentinel"
+  src: url("Sentinel-Bold.otf") format("opentype")
+  font-weight: bold
+  font-style: normal
+
+@font-face
+  font-family: "Sentinel"
+  src: url("Sentinel-BoldItalic.otf") format("opentype")
+  font-weight: bold
+  font-style: italic
+
 
 /* typography */
+
+*
+  font-family: "Sentinel"  
 
 h1, h2, h3, h4, h5, h6
   line-height: 1
@@ -23,3 +52,4 @@ h2
 p
   font-size: 1.1em
   line-height: 1.7em
+  font-family: "Sentinel"
