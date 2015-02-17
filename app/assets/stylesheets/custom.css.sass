@@ -2,15 +2,11 @@
 @import bootstrap
 @import partials/_partials
 
-header.navbar.navbar-fixed-top.navbar-inverse
-  background: none
-  border: none
-
 html
   overflow-y: scroll
 
 body
-  // padding-top: 60px;
+  padding-top: 60px
 
 section
   overflow: auto
@@ -23,20 +19,99 @@ textarea
   h1
     margin-bottom: 10px
 
+.notransition
+  -webkit-transition: none !important
+  -moz-transition: none !important
+  -o-transition: none !important
+  -ms-transition: none !important
+  transition: none !important
+
 /* header */
 
-#logo
-  float: left
-  margin-right: 10px
-  font-size: 1.7em
-  color: white
-  text-transform: uppercase
-  letter-spacing: -1px
-  padding-top: 9px
-  font-weight: bold
-  &:hover
-    color: red
-    text-decoration: none
+header
+
+  #logo
+    float: left
+    font:
+      weight: bolder
+      style: normal
+      family: "Proxima Nova"
+    text-transform: uppercase
+    &:hover
+      text-decoration: none
+
+  li 
+    a
+      font:
+        weight: lighter
+        style: italic
+      margin-right: 5px
+
+    &.dropdown.open, &.dropdown.open > a.dropdown-toggle
+      background-color: transparent
+      color: white
+    
+  .navbar-nav > li > .dropdown-menu
+    border-radius: 0
+    border: none
+    min-width: 0px
+    margin-right: 10px
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .15)
+
+  &.no-bkgd
+    min-height: 50px
+    background-color: transparent
+    border: 1px solid transparent
+
+    #logo
+      padding: 10px
+      margin: 10px
+      color: white
+      font-size: 3em
+
+    li a
+      color: $gray
+      font-size: 1.4em
+      
+      &:hover
+        background: transparent
+        color: white
+    
+    ul.dropdown-menu, ul.dropdown-menu li a
+
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0)  
+      background: transparent
+      font-size: 14px
+
+
+  &.white-bkgd
+    @include transition(background, 0.4s, linear)
+    #logo, li a
+      @include transition(all, 0.4s, linear)
+
+    min-height: 20px
+    background-color: white
+    border: 1px solid $gray-light
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .05)
+
+    #logo
+      padding: 5px
+      margin: 5px
+      color: $gray-dark
+      font-size: 2em
+
+    li a
+      padding: 
+        top: 8px
+        bottom: 5px
+
+    ul.dropdown-menu
+      margin-top: 4px
+      li a
+        padding: 
+          top: 2px
+          bottom: 2px
+
 
 /* footer */
 
@@ -48,7 +123,7 @@ footer
   a
     color: $gray
     &:hover
-      color: $gray-darker
+      color: $gray-dark
   small
     float: left
   ul

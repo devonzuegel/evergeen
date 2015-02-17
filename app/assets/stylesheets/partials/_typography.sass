@@ -1,33 +1,86 @@
 @import "_variables"
 @import "_mixins"
 
+// SENTINEL
 
-@font-face
-  font-family: "Sentinel"
-  src: url("Sentinel-Regular.otf") format("opentype")
-  font-weight: normal
-  font-style: normal
+  @font-face
+    font-family: "Sentinel"
+    src: url("Sentinel-Black.otf") format("opentype")
+    font-weight: bolder
+    font-style: normal
 
-@font-face
-  font-family: "Sentinel"
-  src: url("Sentinel-Italic.otf") format("opentype")
-  font-weight: normal
-  font-style: italic
+  @font-face
+    font-family: "Sentinel"
+    src: url("Sentinel-BlackItalic.otf") format("opentype")
+    font-weight: bolder
+    font-style: italic
 
-@font-face
-  font-family: "Sentinel"
-  src: url("Sentinel-Bold.otf") format("opentype")
-  font-weight: bold
-  font-style: normal
+  @font-face
+    font-family: "Sentinel"
+    src: url("Sentinel-Bold.otf") format("opentype")
+    font-weight: bold
+    font-style: normal
 
-@font-face
-  font-family: "Sentinel"
-  src: url("Sentinel-BoldItalic.otf") format("opentype")
-  font-weight: bold
-  font-style: italic
+  @font-face
+    font-family: "Sentinel"
+    src: url("Sentinel-BoldItalic.otf") format("opentype")
+    font-weight: bold
+    font-style: italic
+
+  @font-face
+    font-family: "Sentinel"
+    src: url("Sentinel-Light.otf") format("opentype")
+    font-weight: lighter
+    font-style: normal
+
+  @font-face
+    font-family: "Sentinel"
+    src: url("Sentinel-LightItalic.otf") format("opentype")
+    font-weight: lighter
+    font-style: italic
+
+  @font-face
+    font-family: "Sentinel"
+    src: url("Sentinel-Medium.otf") format("opentype")
+    font-weight: normal
+    font-style: normal
+
+  @font-face
+    font-family: "Sentinel"
+    src: url("Sentinel-MediumItalic.otf") format("opentype")
+    font-weight: normal
+    font-style: italic
 
 
-/* typography */
+// PROXMIA NOVA
+
+  @font-face
+    font-family: "Proxima Nova"
+    src: url("ProximaNovaAlt-bold.otf") format("opentype")
+    font-weight: bold
+    font-style: normal
+
+  @font-face
+    font-family: "Proxima Nova"
+    src: url("ProximaNovaAlt-ExtraBold.otf") format("opentype")
+    font-weight: bolder
+    font-style: italic
+
+  @font-face
+    font-family: "Proxima Nova"
+    src: url("ProximaNovaAlt-Light.otf") format("opentype")
+    font-weight: lighter
+    font-style: normal
+
+  @font-face
+    font-family: "Proxima Nova"
+    src: url("ProximaNovaAlt-Semibold.otf") format("opentype")
+    font-weight: normal
+    font-style: italic
+
+
+
+// TYPOGRAPHY
 
 *
   font-family: "Sentinel"  
@@ -36,7 +89,11 @@ h1, h2, h3, h4, h5, h6
   line-height: 1
 
 h1
-  font-size: 3em
+  font:
+    size: 3em
+    family: "Proxima Nova"
+    weight: lighter
+  text-transform: uppercase
   letter-spacing: -2px
   margin-bottom: 30px
   text-align: center
