@@ -1,8 +1,23 @@
 = form_tag charges_path do
+  
+  input#input(type='number' min='0.00')
 
-  script(src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  br
+  br
+
+  script(src="https://checkout.stripe.com/checkout.js"
+         class="stripe-button"
          data-key="#{Rails.configuration.stripe[:publishable_key]}"
-         data-description="CHANGE ME!!!!!!!!"
-         data-amount="#{@amount}")
+         data-description="Deposit!"
+         id="stripe-button")
+  
+  br
 
   = hidden_field_tag :amount, @amount
+
+  javascript:
+    $('#input').keyup(function(e) {
+      var input_val = $(this).val();
+      $('#amount').val(input_val);
+      $('#stripe-button').attr('data-amount', input_val);
+    });

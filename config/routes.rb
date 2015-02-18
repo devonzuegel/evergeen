@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :accounts
 
-  mount Payola::Engine => '/payola', as: :payola
   get 'password_resets/new'
   get 'password_resets/edit'
 

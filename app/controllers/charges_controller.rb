@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+  layout 'application'
 
   def new
     @amount = 2222
@@ -8,6 +9,7 @@ class ChargesController < ApplicationController
   def create
     # Amount in cents
     @amount = params[:amount]
+    puts @amount
 
     # Find the user in the db
     @user = User.find(current_user.id)
