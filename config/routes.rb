@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :transactions
-
   resources :accounts
 
   get 'password_resets/new'
