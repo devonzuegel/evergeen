@@ -17,7 +17,7 @@
 
   javascript:
     $('#input').keyup(function(e) {
-      var input_val = $(this).val();
+      var input_val = $(this).val() * 100;
       $('#amount').val(input_val);
       $('#stripe-button').attr('data-amount', input_val);
     });

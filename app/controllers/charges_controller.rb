@@ -1,46 +1,48 @@
 class ChargesController < ApplicationController
+  include ActionView::Helpers::NumberHelper
   layout 'application'
 
+  def index
+  end
+
   def new
-    @amount = 2222
+    @amount = nil
   end
 
 
   def create
-    # Amount in cents
-    @amount = params[:amount]
-    puts @amount
-
-    # Find the user in the db
-    @user = User.find(current_user.id)
+    amount_in_cents = params[:amount]  # Amount in cents
+    @user = User.find(current_user.id)  # Find user in the db
 
     ##
-    # If the user doesn't yet have a stripeID, create a new customer and
-    # save the stripeID into the user's row.
+    # If the user doesn't yet have a stripeID, create a new
+    # customer and save the stripeID into the user's row.
     if @user.stripeID == nil
-      ap params[:stripeID]
-
       # Create a new Stripe customer.
       new_customer = Stripe::Customer.create(
         :email => @user.email,
         :card  => params[:stripeToken]
       )
-
       # Save the stripeID into the user's row.
       @user.update_attribute(:stripeID, new_customer.id)
     end
 
-    # Create the charge
-    charge = Stripe::Charge.create(
-      :customer    => @user.stripeID,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
-    )
+    begin
+      # Create the charge
+      charge = Stripe::Charge.create(
+        :customer    => @user.stripeID,
+        :amount      => amount_in_cents,
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd'
+      )
+      amount = number_to_currency(amount_in_cents.to_f/100)
+      flash[:success] = "You successfully deposited #{amount}!"
+      redirect_to @user
+    rescue => e
+      flash[:danger] = e.message
+      render 'new'
+    end
 
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
-      redirect_to charges_path
   end
 
 
