@@ -6,24 +6,19 @@ body
       button.navbar-toggle.collapsed(
         data-target="#bs-example-navbar-collapse-1" 
         data-toggle="collapse" 
-        type="button"
-      )
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a#logo(href=root_path)  Rocket
+        type="button") +
+      a#logo(href=root_path)  Name
     
     / Nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li= link_to 'Home', root_path
-        li= link_to 'Help', help_path
+        li= link_to 'How it works', about_path
+        li= link_to 'Our mission', mission_path
         - if logged_in?
           li= link_to 'Users', users_path
           li.dropdown
             a.dropdown-toggle data-toggle="dropdown" href="#" 
-              | Account
+              | Account 
               b.caret
             ul.dropdown-menu
               li= link_to "Profile", current_user
@@ -46,9 +41,7 @@ javascript:
 
   $(document).ready (function () {
     if ($('.header-img').height() != null) {
-      $('header').addClass('no-bkgd').removeClass('white-bkgd');
-    } else {
-      $('header').addClass('white-bkgd').removeClass('no-bkgd');
+      change_nav();
     }
 
     $(window).scroll (function () {

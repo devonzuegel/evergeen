@@ -1,0 +1,94 @@
+.navbar
+  min-height: 0px
+
+header
+  min-height: 15px
+  background-color: white
+  border: 1px solid $gray-light
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, .05)
+
+  .navbar-toggle
+    font:
+      size: 20pt
+      weight: bolder
+    padding: 0
+    color: $gray-dark
+
+  #logo
+    font-size: 20pt
+    float: left
+    font:
+      weight: bolder
+      style: normal
+      family: "Proxima Nova"
+    text-transform: uppercase
+    &:hover
+      text-decoration: none
+    padding: 5px
+    margin: 5px
+    color: $gray-dark
+
+    &.dropdown.open, &.dropdown.open > a.dropdown-toggle
+      background-color: transparent
+      color: white
+    
+  .navbar-nav li
+    a
+      font:
+        weight: lighter
+        style: italic
+      margin-right: 5px
+      font-size: 11pt
+      padding: 
+        top: 8px
+        bottom: 5px
+
+    .dropdown-menu
+      border-radius: 0
+      border: none
+      min-width: 0px
+      margin-right: 10px
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, .15)
+      margin-top: 4px
+      li a
+        padding: 
+          top: 2px
+          bottom: 2px
+
+  &.white-bkgd
+    #logo, li a, .navbar-toggle
+      @include single-transition(all, .3s, ease-out, .0s)
+      -webkit-transform-style: preserve-3d
+
+  &.no-bkgd
+    min-height: 50px
+    background-color: transparent
+    border: 1px solid transparent
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0)
+
+    #logo
+      padding: 10px
+      margin: 10px
+      color: white
+      font-size: 30pt
+
+    li a
+      color: $gray
+      font-size: 13pt
+      
+      &:hover
+        background: transparent
+        color: white
+    
+    ul.dropdown-menu, ul.dropdown-menu li a
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0)  
+      background: transparent
+      font-size: 15pt
+
+
+    .navbar-toggle
+      font:
+        size: 30pt
+        weight: bold
+      padding: 10px
+      color: white

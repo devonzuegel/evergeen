@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get 'users/new'
 
   root             'static_pages#home'
-  get 'help'    => 'static_pages#help'
+  get 'support' => 'static_pages#support'
   get 'about'   => 'static_pages#about'
+  get 'mission' => 'static_pages#mission'
   get 'contact' => 'static_pages#contact'
   get 'signup'  => 'users#new'
   get    'login'   => 'sessions#new'

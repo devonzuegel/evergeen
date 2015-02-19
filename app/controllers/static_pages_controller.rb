@@ -17,6 +17,12 @@ class StaticPagesController < ApplicationController
     puts 'test: ' + test
   end
 
+  def mission
+    response = HTTParty.get("http://rubygems.org/api/v1/versions/httparty.json")
+    test = response[0]['number']
+    puts 'test: ' + test
+  end
+
   def contact
   end
 
