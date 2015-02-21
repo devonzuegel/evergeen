@@ -17,34 +17,34 @@ class ChargesController < ApplicationController
 
     ap params
     
-    # ##
-    # # If the user doesn't yet have a stripeID, create a new
-    # # customer and save the stripeID into the user's row.
-    # if @user.stripeID == nil
-    #   # Create a new Stripe customer.
-    #   new_customer = Stripe::Customer.create(
-    #     :email => @user.email,
-    #     :card  => params[:stripeToken]
-    #   )
-    #   # Save the stripeID into the user's row.
-    #   @user.update_attribute(:stripeID, new_customer.id)
-    # end
+    ##
+    # If the user doesn't yet have a stripeID, create a new
+    # customer and save the stripeID into the user's row.
+    if @user.stripeID == nil
+      # Create a new Stripe customer.
+      new_customer = Stripe::Customer.create(
+        :email => @user.email,
+        :card  => params[:stripeToken]
+      )
+      # Save the stripeID into the user's row.
+      @user.update_attribute(:stripeID, new_customer.id)
+    end
 
-    # begin
-    #   # Create the charge
-    #   charge = Stripe::Charge.create(
-    #     :customer    => @user.stripeID,
-    #     :amount      => amount_in_cents,
-    #     :description => 'Rails Stripe customer',
-    #     :currency    => 'usd'
-    #   )
-    #   amount = number_to_currency(amount_in_cents.to_f/100)
-    #   flash[:success] = "You successfully deposited #{amount}!"
-    #   redirect_to @user
-    # rescue => e
-    #   flash[:danger] = e.message
-    #   render 'new'
-    # end
+    begin
+      # Create the charge
+      charge = Stripe::Charge.create(
+        :customer    => @user.stripeID,
+        :amount      => amount_in_cents,
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd'
+      )
+      amount = number_to_currency(amount_in_cents.to_f/100)
+      flash[:success] = "You successfully deposited #{amount}!"
+      redirect_to @user
+    rescue => e
+      flash[:danger] = e.message
+      render 'new'
+    end
 
   end
 
