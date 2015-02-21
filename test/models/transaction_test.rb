@@ -5,7 +5,7 @@ class TransactionTest < ActiveSupport::TestCase
 	def setup
 		@user = users(:michael)
 		@transaction = Transaction.new(
-			amount: 42,
+			amount: 100,
 			stripe_id: nil,
 			description: 'Test transaction',
 			charged: false,
@@ -24,5 +24,16 @@ class TransactionTest < ActiveSupport::TestCase
 		@transaction.user_id = nil
 		assert_not @transaction.valid?
 	end
+
+  test "amount should be present " do
+    @transaction.amount = nil
+    assert_not @transaction.valid?
+  end
+
+
+  test "amount should be at least 50 " do
+    @transaction.amount = 2
+    assert_not @transaction.valid?
+  end
 
 end
