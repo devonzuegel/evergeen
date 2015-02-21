@@ -1,6 +1,17 @@
 = form_tag charges_path do
   
-  input#input(type='number' min='0.00')
+  / Input fields representing sensitive card data (number, CVC,
+  / expiration month and year) do not have a 'name' attribute.
+  / This prevents them from hitting the server when the form is
+  / submitted. 
+
+  / Your life becomes easier if sensitive cardholder data does
+  / not hit your servers. You no longer need to worry about
+  / redacting logs, encrypting cardholder details, or other
+  / burdens of PCI compliance.
+  
+  input#input(type='number' min='0.00'
+              onkeypress="return isNumKey(event)")
 
   br
   br
@@ -9,6 +20,7 @@
          class="stripe-button"
          data-key="#{Rails.configuration.stripe[:publishable_key]}"
          data-description="Deposit!"
+         data-email="#{@user.email}"
          id="stripe-button")
   
   br
@@ -17,7 +29,18 @@
 
   javascript:
     $('#input').keyup(function(e) {
-      var input_val = $(this).val() * 100;
+      var input_val = $(this).val();
       $('#amount').val(input_val);
       $('#stripe-button').attr('data-amount', input_val);
     });
+
+    
+    function isNumKey(e) {
+      var input_val = $('#input').val();
+
+      var ch = (e.which) ? e.which : e.keyCode;
+      var is_num_key = !(ch != 46 && ch > 31 && (ch < 48 || ch > 57));
+      var still_typing = /^\d*\.?\d?$/.test(input_val);
+
+      return is_num_key && still_typing;
+    }
