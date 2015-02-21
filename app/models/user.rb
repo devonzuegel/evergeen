@@ -40,9 +40,11 @@ class User < ActiveRecord::Base
   # the parallel structure with the has_many :following association.
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :transactions
+
+
   # Create a getter & a setter for remember_token, activation_token, & reset_token.
   attr_accessor :remember_token, :activation_token, :reset_token
-
 
 
   ###### FILTERS ########################################################

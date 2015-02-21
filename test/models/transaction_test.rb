@@ -4,7 +4,7 @@ class TransactionTest < ActiveSupport::TestCase
 
 	def setup
 		@user = users(:michael)
-		@transaction = Transaction.new(
+		@transaction = @user.transactions.build(
 			amount: 100,
 			stripe_id: nil,
 			description: 'Test transaction',
@@ -35,5 +35,11 @@ class TransactionTest < ActiveSupport::TestCase
     @transaction.amount = 2
     assert_not @transaction.valid?
   end
+
+
+  test "order should be most recent first" do
+    assert_equal Transaction.first, transactions(:most_recent)
+  end
+
 
 end
