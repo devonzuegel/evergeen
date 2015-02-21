@@ -10,7 +10,7 @@
   / redacting logs, encrypting cardholder details, or other
   / burdens of PCI compliance.
   
-  input#input(type='number' min='0.50'
+  input#input(type='number' min='0.00'
               onkeypress="return isNumKey(event)")
 
   br
@@ -29,9 +29,9 @@
 
   javascript:
     $('#input').keyup(function(e) {
-      var input_val = $(this).val();
-      $('#amount').val(input_val);
-      $('#stripe-button').attr('data-amount', input_val);
+      var input_val_in_cents = 100 * $(this).val() / 1.00;
+      $('#amount').val(input_val_in_cents);
+      $('#stripe-button').attr('data-amount', input_val_in_cents);
     });
 
     

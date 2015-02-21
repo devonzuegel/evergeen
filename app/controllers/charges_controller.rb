@@ -35,7 +35,7 @@ class ChargesController < ApplicationController
       charge = Stripe::Charge.create(
         :customer    => @user.stripeID,
         :amount      => amount_in_cents,
-        :description => 'Rails Stripe customer',
+        :description => @user.email + ' deposit',
         :currency    => 'usd'
       )
       amount = number_to_currency(amount_in_cents.to_f/100)
@@ -43,7 +43,8 @@ class ChargesController < ApplicationController
       redirect_to @user
     rescue => e
       flash[:danger] = e.message
-      render 'new'
+      @amount = amount
+      redirect_to '/charges/new'
     end
 
   end

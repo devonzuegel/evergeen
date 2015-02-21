@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :accounts
 
   get 'password_resets/new'
@@ -9,14 +10,18 @@ Rails.application.routes.draw do
   get 'users/new'
 
   root             'static_pages#home'
+
   get 'support' => 'static_pages#support'
   get 'about'   => 'static_pages#about'
   get 'mission' => 'static_pages#mission'
   get 'contact' => 'static_pages#contact'
   get 'signup'  => 'users#new'
+
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+  get 'deposit' => 'transactions#deposit'
 
   ##
   # Arranges for the URLs for following and followers to look like
