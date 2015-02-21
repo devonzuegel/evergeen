@@ -3,11 +3,12 @@ class User < ActiveRecord::Base
   ###### RELATIONSHIPS ###################################################
 
   ##
-  # If a user is destroyed, the user’s microposts should be
-  # destroyed as well. This prevents userless microposts from 
-  # being stranded in the database when admins choose to remove
+  # If a user is destroyed, his microposts & transactions should
+  # be destroyed as well. This prevents userless microposts/transactions
+  # from being stranded in the database when admins choose to remove
   # users from the system.
   has_many :microposts, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 
   ##
   # We have to tell Rails the model class name to look for, because the
@@ -40,7 +41,6 @@ class User < ActiveRecord::Base
   # the parallel structure with the has_many :following association.
   has_many :followers, through: :passive_relationships, source: :follower
 
-  has_many :transactions
 
 
   # Create a getter & a setter for remember_token, activation_token, & reset_token.

@@ -42,4 +42,26 @@ class TransactionTest < ActiveSupport::TestCase
   end
 
 
+  test "associated transactions should be destroyed" do
+    @user.save
+
+    # Create a second transaction associated with @user.
+    @user.transactions.create!(
+			amount: 100,
+			stripe_id: nil,
+			description: 'Test transaction',
+			charged: false,
+			user_id: @user.id
+		)
+
+    ##
+		# In case tests change, create a dynamic variable that counts
+		# the number of transactions associated with @user, which will
+		# be destroyed at the same time as @user.
+		num_to_remove = @user.transactions.count
+    assert_difference 'Transaction.count', -num_to_remove do
+      @user.destroy
+    end
+  end
+
 end
