@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
-  has_one :account
 
   ##
   # Rails would see “followeds” and use the singular “followed”,
