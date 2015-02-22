@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   get 'deposit' => 'transactions#deposit'
+  get 'withdraw' => 'transactions#withdraw'
 
   ##
   # Arranges for the URLs for following and followers to look like
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
   end
 
   resources :charges
+  resources :transactions
   
   ##
   # Model account activations as a resource even though they won’t be 

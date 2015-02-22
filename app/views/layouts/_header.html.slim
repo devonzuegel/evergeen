@@ -15,7 +15,7 @@ body
         li= link_to 'How it works', about_path
         li= link_to 'Our mission', mission_path
         - if logged_in?
-          li= link_to 'Users', users_path
+          li= link_to 'Deposit', deposit_path
           li.dropdown
             a.dropdown-toggle data-toggle="dropdown" href="#" 
               | Account 
@@ -48,4 +48,4 @@ javascript:
     $(window).scroll (function () {
       change_nav();
     })
-  })
+  });

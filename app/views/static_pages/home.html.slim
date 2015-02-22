@@ -1,8 +1,11 @@
 = content_for :header_img
-  .header-img#mason-jar 
+  .header-img#evergreen-forest
+
+
 
 
 - if logged_in?
+
   .row
     aside.col-md-4
       section.user_info
@@ -14,7 +17,9 @@
     .col-md-8
       h3 Micropost Feed
       = render 'shared/feed'
+
 - else
+
   .center.jumbotron
     h1 Welcome to our app!
     h2 This is the home page.

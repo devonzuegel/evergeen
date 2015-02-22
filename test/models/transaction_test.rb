@@ -6,7 +6,6 @@ class TransactionTest < ActiveSupport::TestCase
 		@user = users(:michael)
 		@transaction = @user.transactions.build(
 			amount: 100,
-			stripe_id: nil,
 			description: 'Test transaction',
 			charged: false,
 			user_id: @user.id
@@ -48,7 +47,6 @@ class TransactionTest < ActiveSupport::TestCase
     # Create a second transaction associated with @user.
     @user.transactions.create!(
 			amount: 100,
-			stripe_id: nil,
 			description: 'Test transaction',
 			charged: false,
 			user_id: @user.id

@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
 
-
-    ##### Before filters #####
+  ##### Before filters #####
 
     # Confirms a logged-in user.
     def logged_in_user

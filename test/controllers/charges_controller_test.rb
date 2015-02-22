@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ChargesControllerTest < Minitest::Test
+class ChargesControllerTest < ActionController::TestCase
   # context 'charges controller' do
 
   #   should "the truth" do

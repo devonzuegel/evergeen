@@ -22,6 +22,7 @@ gem 'figaro'
 gem 'httparty'
 gem 'human_api'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'autonumeric-rails'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

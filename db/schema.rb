@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221121253) do
+ActiveRecord::Schema.define(version: 20150222043016) do
 
   create_table "microposts", force: true do |t|
     t.text     "content"
@@ -36,8 +36,7 @@ ActiveRecord::Schema.define(version: 20150221121253) do
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "transactions", force: true do |t|
-    t.decimal  "amount"
-    t.string   "stripe_id"
+    t.integer  "amount"
     t.text     "description"
     t.boolean  "charged"
     t.integer  "user_id"
