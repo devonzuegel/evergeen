@@ -1,10 +1,9 @@
 /!
-  | 'object' is passed into the partial through a hash. This unifies the cases
-  | when we want to get the errors from @user or @micropost (among others).
+/ | 'object' is passed into the partial through a hash. This unifies the cases
+/ | when we want to get the errors from @user or @micropost (among others).
 - if object.errors.any?
-  #error_explanation
-    .alert.alert-danger
-      | The form contains #{pluralize(object.errors.count, "error")}.
+  .alert.alert-danger
+    h4 Please fix the following errors:
     ul
       - object.errors.full_messages.each do |msg|
         li= msg

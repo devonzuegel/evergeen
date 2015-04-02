@@ -1,0 +1,18 @@
+#quick-signup
+  = form_for @user do |f|
+    .col-1.grey Save and win
+    = render 'shared/error_messages', object: f.object
+    .col-1
+      = f.label :name
+      = f.text_field :name, autofocus: true
+    .col-1
+      = f.label :email
+      = f.text_field :email
+    .col-2
+      = f.label :password
+      = f.password_field :password
+    .col-2
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+    .col-1.grey
+      = f.submit "Open an account", class: "btn primary"

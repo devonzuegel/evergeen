@@ -1,7 +1,4 @@
-@import bootstrap-sprockets
-@import bootstrap
 @import partials/_partials
-@import compass
 
 html
   overflow-y: scroll
@@ -125,17 +122,6 @@ input, textarea, select, .uneditable-input
 input
   height: auto !important
 
-#error_explanation
-  color: red
-  ul
-    color: red
-    margin: 0 0 30px 0
-
-.field_with_errors
-  @extend .has-error
-  .form-control
-    color: $state-danger-text
-
 .checkbox
   margin-top: -10px
   margin-bottom: 10px
@@ -158,7 +144,7 @@ input
   margin: auto
 
   &.primary
-    opacity: .6
+    opacity: .8
     background-color: $green
     color: white
     margin: auto

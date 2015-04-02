@@ -51,7 +51,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
           	password: "foobaz",
           	password_confirmation: "barquux" 
           } 
-    assert_select('div#error_explanation')
+    assert_select('div.alert.alert-danger')
 
     # Blank password & confirmation
     patch password_reset_path(user.reset_token),

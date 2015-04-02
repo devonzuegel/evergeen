@@ -1,26 +1,16 @@
 = content_for :header_img
   .header-img#evergreen-forest: #content
-    #current-jackpot
-      h1 Current Jackpot: $5,302,108
-      h1 Interest Rate: .9%
     
-    #quick-signup
+    .col-sm-6: #current-jackpot
+      .stat
+        .label Current Jackpot
+        .amount $5,302,108
+      .stat
+        .label Interest Rate
+        .amount .90%
+    
+    .col-sm-6
       - if logged_in?
         = render 'charges/deposit'
       - else
-        = form_for @user do |f|
-          = render 'shared/error_messages', object: f.object
-          .col-2
-            = f.label :name
-            = f.text_field :name, autofocus: true
-          .col-2
-            = f.label :email
-            = f.text_field :email
-          .col-2
-            = f.label :password
-            = f.password_field :password
-          .col-2
-            = f.label :password_confirmation
-            = f.password_field :password_confirmation
-          .col-1
-            = f.submit "Save and win", class: "btn primary"
+        = render 'users/signup'
