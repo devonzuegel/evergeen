@@ -8,13 +8,19 @@
       - if logged_in?
         = render 'charges/deposit'
       - else
-        .col-1 Enter to save and win
         = form_for @user do |f|
           = render 'shared/error_messages', object: f.object
           .col-2
+            = f.label :name
+            = f.text_field :name, autofocus: true
+          .col-2
             = f.label :email
-            = f.text_field :email, autofocus: true
+            = f.text_field :email
           .col-2
             = f.label :password
             = f.password_field :password
-          = f.submit "Start saving now!", class: "btn btn-primary"
+          .col-2
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation
+          .col-1
+            = f.submit "Save and win", class: "btn primary"

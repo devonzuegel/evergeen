@@ -33,7 +33,7 @@ javascript:
   function change_nav() {
     var hdr_img_height = $('.header-img').height() - 50 || 0;
 
-    if ($(this).scrollTop() >= 30) {
+    if ($(this).scrollTop() >= hdr_img_height / 8) {
       $('header').addClass('white-bkgd').removeClass('no-bkgd');
     } else {
       $('header').addClass('no-bkgd').removeClass('white-bkgd');

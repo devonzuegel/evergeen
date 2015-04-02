@@ -53,3 +53,18 @@ end
 def resource_tests(resource)
   integration_tests(resource) << controller_test(resource)
 end
+
+guard 'livereload' do
+  # notify: true          # default false
+  # host: '3000'     # default '0.0.0.0'
+  # port: '12345'         # default '35729'
+  # apply_css_live: false # default true
+  # override_url: false   # default false
+  # grace_period: 0.5     # default 0 (seconds)
+  watch(%r{app/views/.+\.(erb|haml|slim)$})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{public/.+\.(css|js|html)})
+  watch(%r{config/locales/.+\.yml})
+  # Rails Assets Pipeline
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+end

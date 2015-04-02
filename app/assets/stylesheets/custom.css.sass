@@ -148,8 +148,25 @@ input
   margin-left: 0
 
 .btn
-  background-color: $gray-dark
   border: none
+  padding: 10px
   font-family: Source Sans Pro, Arial, sans-serif
-  font-weight: lighter
   text-transform: uppercase
+  font-size: 13pt
+  width: auto
+  display: block
+  margin: auto
+
+  &.primary
+    opacity: .6
+    background-color: $green
+    color: white
+    margin: auto
+    &:hover
+      opacity: 1
+
+  .inverted
+    background: none
+    color: $gray-darker
+    &:hover
+      color: $green
