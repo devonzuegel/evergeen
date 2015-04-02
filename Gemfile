@@ -24,6 +24,7 @@ gem 'human_api'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'autonumeric-rails'
 gem 'monetize'
+gem 'traceur-rails', '~> 0.0.3'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

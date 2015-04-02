@@ -1,27 +1,20 @@
 = content_for :header_img
-  .header-img#evergreen-forest
-
-
-
-
-- if logged_in?
-
-  .row
-    aside.col-md-4
-      section.user_info
-        = render 'shared/user_info'
-      section.stats
-        = render 'shared/stats'
-      section.micropost_form
-        = render 'shared/micropost_form'
-    .col-md-8
-      h3 Micropost Feed
-      = render 'shared/feed'
-
-- else
-
-  .center.jumbotron
-    h1 Welcome to our app!
-    h2 This is the home page.
-    = link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"
-  = link_to image_tag("rails.png", alt: "Rails logo"), 'http://rubyonrails.org/'
+  .header-img#evergreen-forest: #content
+    #current-jackpot
+      h1 Current Jackpot: $5,302,108
+      h1 Interest Rate: .9%
+    
+    #quick-signup
+      - if logged_in?
+        = render 'charges/deposit'
+      - else
+        .col-1 Enter to save and win
+        = form_for @user do |f|
+          = render 'shared/error_messages', object: f.object
+          .col-2
+            = f.label :email
+            = f.text_field :email, autofocus: true
+          .col-2
+            = f.label :password
+            = f.password_field :password
+          = f.submit "Start saving now!", class: "btn btn-primary"
