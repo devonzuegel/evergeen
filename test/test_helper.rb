@@ -4,7 +4,9 @@ require 'rails/test_help'
 require 'minitest/reporters'
 require 'minitest/autorun'
 require 'shoulda/context'
-Minitest::Reporters.use!
+
+# defaults to using `Minitest::Reporters::ProgressReporter.new`
+Minitest::Reporters.use! 
 
 class ActiveSupport::TestCase
   ##

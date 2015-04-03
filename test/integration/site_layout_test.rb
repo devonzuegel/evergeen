@@ -13,11 +13,14 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", about_path, count: 2
     assert_select "a[href=?]", contact_path
     assert_select "a[href=?]", support_path
-    assert_select "a[href=?]", mission_path
+
+    assert_select "a[href=?]", login_path, count: 2
+    assert_select "a[href=?]", signup_path
   end
 
-  test "no deposit form when not logged in" do
+  test "signup form if not logged in" do
   	get root_path
+  	assert_select "form#new_user"
   	assert_select "form#new_transaction", false
   end
 
@@ -25,6 +28,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
   	get root_path
   	assert_select "form#new_transaction"
+  	assert_select "form#new_user", false
   end
 
 end

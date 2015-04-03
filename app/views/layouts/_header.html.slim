@@ -12,8 +12,7 @@ body
     / Nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li= link_to 'How it works', about_path
-        li= link_to 'Our mission', mission_path
+        li= link_to 'About', about_path
         - if logged_in?
           li= link_to 'Deposit', deposit_path
           li.dropdown
