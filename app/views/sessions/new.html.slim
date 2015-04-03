@@ -1,16 +1,20 @@
 - provide(:title, "Log in")
 h1 Log in
-.row
-  .col-md-6.col-md-offset-3
-    = form_for(:session, url: login_path) do |f|
+
+#quick-signup
+  = form_for(:session, url: login_path) do |f|
+    .col-1.grey Save and win
+    .col-2
       = f.label :email
-      = f.text_field :email, class: 'form-control'
+      = f.text_field :email
+    .col-2
       = f.label :password
-      = link_to "(forgot password)", new_password_reset_path
-      = f.password_field :password, class: 'form-control'
+      = f.password_field :password
+    .col-1
       = f.label :remember_me, class: "checkbox inline" do
         = f.check_box :remember_me
-        span Remember me on this computer
-      = f.submit "Log in", class: "btn btn-primary"
-    p
-      | New user? #{link_to "Sign up now!", signup_path}
+        span: label Remember me on this computer
+    .col-1.grey
+      = f.submit "Log in", class: "btn primary"
+      
+      p New user? #{link_to "Sign up now!", signup_path}
