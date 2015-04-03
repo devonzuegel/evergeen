@@ -25,6 +25,7 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'autonumeric-rails'
 gem 'monetize'
 gem 'traceur-rails', '~> 0.0.3'
+gem 'redcarpet'
 
 group :development do
   gem 'guard-livereload', '~> 2.4', require: false

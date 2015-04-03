@@ -6,6 +6,14 @@
 
 /**** HEADER IMAGES ***************************************************/
 
+#evergreen-forest
+  background: linear-gradient(rgba(0,30,10,0.4), rgba(0,0,0,0)), image-url('evergreen-forest.jpg')
+  background-position: center
+
+#forest-bike
+  width: 100%
+  background: image-url('https://rockyknob.files.wordpress.com/2012/01/bike-1.jpg')
+
 .header-img
   margin-top: -60px
   position: relative
@@ -18,10 +26,8 @@
     background-size: 786px
     border-bottom: 1px solid $brown-med
 
-  // Home page has a #evergreen-forest for its header image
-  &#evergreen-forest
-    background: linear-gradient(rgba(0,30,10,0.4), rgba(0,0,0,0)), image-url('evergreen-forest.jpg')
-    background-position: center
+  &.short
+    height: 10vh
 
   #content
     margin: auto
