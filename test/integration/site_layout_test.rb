@@ -2,6 +2,10 @@ require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
 
+  def setup
+    @user = users(:michael)
+  end
+
   test "layout links" do
     get root_path
     assert_template 'static_pages/home'
@@ -12,9 +16,15 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", mission_path
   end
 
-  test "new deposit form" do
+  test "no deposit form when not logged in" do
   	get root_path
-  	assert_select "form"
+  	assert_select "form#new_transaction", false
+  end
+
+  test "deposit form if logged in" do
+    log_in_as(@user)
+  	get root_path
+  	assert_select "form#new_transaction"
   end
 
 end
