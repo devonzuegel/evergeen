@@ -117,13 +117,15 @@ h2
   color: $gray-light
 
 p
-  font-size: 16pt
+  font-size: 11pt
   line-height: 2em
   font-family: $sans-serif-2
   font-weight: 200
 
 a
-  color: $teal
+  &:visited, &:hover, &:active, &:focus 
+    color: $green
+    background: none
 
-  &:visited
-    color: $teal-dark
+  &:hover
+    text-decoration: underline

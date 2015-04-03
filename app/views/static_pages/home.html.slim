@@ -1,15 +1,16 @@
 = content_for :header_img
-  .header-img#evergreen-forest: #content
-    .col-sm-5: #current-jackpot
-      .stat
-        .label Current Jackpot:
-        .amount $5,302,108
-      .stat
-        .label Interest Rate:
-        .amount .90%
+  .header-img#evergreen-forest
+    #content
+      .col-lg-6.center: #current-jackpot
+        .stat
+          .label Current Jackpot:
+          .amount $5,302,108
+        .stat
+          .label Interest Rate:
+          .amount .90%
 
-    .col-sm-7
-      - if logged_in?
-        = render 'charges/deposit'
-      - else
-        = render 'users/signup'
+      .col-lg-6.center
+        - if logged_in?
+          = render 'charges/deposit'
+        - else
+          = render 'users/signup'

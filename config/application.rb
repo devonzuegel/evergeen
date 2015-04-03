@@ -8,7 +8,9 @@ Bundler.require(*Rails.groups)
 
 module SampleApp
   class Application < Rails::Application
-    # config.sass.preferred_syntax = :sass
+    config.sass.preferred_syntax = :sass
+    config.sass.cache = true
+    config.sass.read_cache = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -37,6 +39,7 @@ module SampleApp
           '.html', '.erb', '.haml', # Templates
           '.png', '.gif', '.jpg', '.jpeg', # Images
           '.eot', '.otf', '.svc', '.woff', '.ttf', # Fonts
+          '.sass', # Styles
         ]
       end)
     end

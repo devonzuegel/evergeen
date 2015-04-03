@@ -1,19 +1,18 @@
 - provide(:title, "Log in")
-h1 Log in
 
 #quick-signup
   = form_for(:session, url: login_path) do |f|
-    .col-1.grey Save and win
-    .col-2
+    .col-1.grey Log in
+    .col-1
       = f.label :email
       = f.text_field :email
-    .col-2
+    .col-1
       = f.label :password
       = f.password_field :password
-    .col-1
+    .col-1.center
       = f.label :remember_me, class: "checkbox inline" do
         = f.check_box :remember_me
-        span: label Remember me on this computer
+        span Remember me on this computer
     .col-1.grey
       = f.submit "Log in", class: "btn primary"
       
