@@ -4,3 +4,24 @@
   -moz-box-sizing:    border-box
   -webkit-box-sizing: border-box
   box-sizing:         border-box
+
+
+// @mixin google_web_fonts($fonts...) 
+//   $url: "http://fonts.googleapis.com/css?family="
+//   $nb: 0
+  
+//   @each $font-name in $fonts
+//     $nb: $nb + 1
+//     $nb-word: 0
+    
+//     @each $word in $font-name
+//       $nb-word: $nb-word + 1
+//       $url: $url + $word
+      
+//       @if $nb-word < length($font-name)
+//         $url: $url + "+"
+
+//     @if $nb < length($fonts)
+//       $url: $url + ":100,200,300,400,500,600,700,800,900|" 
+
+//   @import url(#{$url})

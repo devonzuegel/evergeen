@@ -1,6 +1,7 @@
 @import "_variables"
 @import "_mixins"
 
+
 // SENTINEL
 
   @font-face
@@ -79,11 +80,20 @@
     font-style: italic
 
 
+// Google Web Fonts
+  
+@import url(http://fonts.googleapis.com/css?family=Martel+Sans:200,400)
 
 // TYPOGRAPHY
 
+$serif: "Sentinel"
+$sans-serif-1: "Source Sans Pro", Arial, sans-serif
+$sans-serif-2: 'Martel Sans', sans-serif
+$mono: PT Mono
+
 *
-  font-family: "Sentinel"  
+  font-family: $sans-serif-2
+  font-weight: 200
 
 h1, h2, h3, h4, h5, h6
   line-height: 1
@@ -91,7 +101,7 @@ h1, h2, h3, h4, h5, h6
 h1
   font:
     size: 3em
-    family: "Proxima Nova"
+    family: $sans-serif-1
     weight: lighter
   text-transform: uppercase
   letter-spacing: -2px
@@ -107,6 +117,13 @@ h2
   color: $gray-light
 
 p
-  font-size: 1.1em
-  line-height: 1.7em
-  font-family: "Sentinel"
+  font-size: 16pt
+  line-height: 2em
+  font-family: $sans-serif-2
+  font-weight: 200
+
+a
+  color: $teal
+
+  &:visited
+    color: $teal-dark
