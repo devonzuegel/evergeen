@@ -1,0 +1,16 @@
+= form_for @new_transaction do |f|
+	.col-1.grey New Deposit
+
+	= render 'shared/error_messages', object: f.object
+
+	.col-1
+		= f.label :amount
+		= f.text_field :amount, 
+		    data: { autonumeric: {aSign: '$ ', mDec: 2} }
+
+	.col-1
+		= f.label :description, "Description (optional)"
+		= f.text_field :description
+		
+	.col-1.grey
+	  = f.submit 'Make deposit', class: 'btn primary'
