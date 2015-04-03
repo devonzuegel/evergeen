@@ -11,4 +11,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", support_path
     assert_select "a[href=?]", mission_path
   end
+
+  test "new deposit form" do
+  	get root_path
+  	assert_select "form"
+  end
+
 end

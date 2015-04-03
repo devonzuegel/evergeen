@@ -15,7 +15,7 @@ class TransactionsControllerTest < ActionController::TestCase
   end
 
 
-  test "should redirect <withdraw></withdraw> when not logged in" do
+  test "should redirect when not logged in" do
     assert_no_difference 'Transaction.count' do
       post(:withdraw, transaction: @transaction)
     end
