@@ -20,7 +20,6 @@ gem 'sdoc',                     '0.4.0', group: :doc
 gem 'slim',                     '~> 2.1.0'
 gem 'figaro'
 gem 'httparty'
-gem 'human_api'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'autonumeric-rails'
 gem 'monetize'

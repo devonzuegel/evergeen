@@ -62,13 +62,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-
-
-  def connect_humanAPI
-    @user = User.find(params[:id])
-    p params
-  end
-
+  
 
   def destroy
     User.find(params[:id]).destroy
