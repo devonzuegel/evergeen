@@ -10,8 +10,9 @@
       = render 'shared/stats'
   .col-md-8
     = render 'follow_form' if logged_in?
-    - if @user.microposts.any?
-      h3 Microposts (#{@user.microposts.count})
-      ol.microposts
-        = render @microposts
-      = will_paginate @microposts
+
+    - if @user.transactions.any?
+      h3 Transactions (#{@user.transactions.count})
+      ol.transactions
+        = render @transactions
+      = will_paginate @transactions

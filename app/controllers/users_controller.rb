@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def index
     ##
     # User.paginate pulls the users out of the database one chunk at a
-    # time (30 by default), based on the :page parameter.
+    # time (30 by default), based on the :per_page parameter.
     @users = User.paginate(page: params[:page])
   end
 
@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    @transactions = @user.transactions.paginate(page: params[:page], per_page: 10)
   end
 
 

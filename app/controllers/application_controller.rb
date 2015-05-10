@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-
   ##### Before filters #####
 
     # Confirms a logged-in user.

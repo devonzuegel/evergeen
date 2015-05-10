@@ -1,0 +1,9 @@
+li id="#{transaction.id}" 
+  span.content
+    | #{number_to_currency(transaction.amount)}
+    p #{transaction.description}
+  span.timestamp
+    | #{time_ago_in_words(transaction.created_at)} ago 
+    - if current_user?(transaction.user)
+      = link_to "delete", transaction, method: :delete, data: { confirm: "You sure?" }
+      = link_to "edit", edit_transaction_path
