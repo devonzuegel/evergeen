@@ -9,6 +9,8 @@ require 'shoulda/context'
 Minitest::Reporters.use! 
 
 class ActiveSupport::TestCase
+  include ActionView::Helpers::NumberHelper
+  
   ##
   # Setup all fixtures in test/fixtures/*.yml for all tests in
   # alphabetical order.

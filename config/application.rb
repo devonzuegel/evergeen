@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module SampleApp
   class Application < Rails::Application
+    WillPaginate.per_page = 10
+    
     config.sass.preferred_syntax = :sass
     config.sass.cache = true
     config.sass.read_cache = true
