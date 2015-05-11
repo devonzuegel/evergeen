@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
 
 	# Name validations
   validates :name, presence: true
-  validates :name, length: { maximum: 50 }
+  validates :name, length: { minimum: 4, maximum: 50 }
 
 
 	# Email validations
