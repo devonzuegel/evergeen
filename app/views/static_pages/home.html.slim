@@ -1,23 +1,47 @@
 = content_for :header_img
-  .header-img#evergreen-forest
-    #content
-      .col-lg-6.center: #current-jackpot
-        .stat
-          .label Current Jackpot:
-          .amount $5,302,108
-        .stat
-          .label Interest Rate:
-          .amount .90%
+  .row.pad
+    .col-lg-12.center: #current-jackpot
+      .stat
+        .label Current Jackpot:
+        .amount $5,302,108
+    
+    .col-lg-1
+    .col-lg-5
+      h3 The lottery you can't lose.
+      p
+        | Every dollar you save brings you closer to the 
+        b.green jackpot 
+        | and a 
+        b.green secure future
+        | .
 
-      .col-lg-6.center
-        - if logged_in?
-          = render 'transactions/deposit'
-        - else
-          = render 'users/signup'
+    .col-lg-6.center
+      - if logged_in?
+        = render 'transactions/deposit'
+      - else
+        = render 'users/signup'
 
+.green-bkgd: .page-section
+  .row
+    .col-sm-1
+    .col-sm-6
+      h3 A chance to change your life.
+      p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    .col-sm-5
 
-h3 1) Deposit
-
-h3 2) Earn interest
-
-h3 3) Win the jackpot!
+  .row
+    .col-sm-5
+    .col-sm-6
+      h3 The promise of a secure future.
+      p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    .col-sm-1
+.page-section
+  .row
+    .col-sm-1
+    .col-sm-5
+      h3 Scratch-off Tickets
+      p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    .col-sm-5
+      h3 Online Accounts
+      p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    .col-sm-1

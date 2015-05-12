@@ -27,24 +27,3 @@ body
         - else
           li= link_to "Sign up", signup_path
           li= link_to "Log in", login_path
-
-javascript:
-  function change_nav() {
-    var hdr_img_height = $('.header-img').height() - 50 || 0;
-
-    if ($(this).scrollTop() >= hdr_img_height / 4) {
-      $('header').addClass('white-bkgd').removeClass('no-bkgd');
-    } else {
-      $('header').addClass('no-bkgd').removeClass('white-bkgd');
-    }
-  }
-
-  $(document).ready (function () {
-    if ($('.header-img').height() != null) {
-      change_nav();
-    }
-
-    $(window).scroll (function () {
-      change_nav();
-    })
-  });
